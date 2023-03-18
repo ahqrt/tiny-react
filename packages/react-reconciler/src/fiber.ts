@@ -19,6 +19,7 @@ export class FiberNode {
     index: number
     alterNate: FiberNode | null
     flags: Flags
+    subtreeFlags: Flags
     updateQueue: unknown
 
     constructor(tag: WorkTag, pendingProps: Props, key: Key) {
@@ -44,6 +45,7 @@ export class FiberNode {
         this.memorizedState = null
         // effect
         this.flags = NoFlags
+        this.subtreeFlags = NoFlags
     }
 }
 
@@ -75,6 +77,7 @@ export const createWorkInProgress = (current: FiberNode, pendingProps: Props): F
         // update
         wip.pendingProps = pendingProps
         wip.flags = NoFlags
+        wip.subtreeFlags = NoFlags
     }
     wip.type = current.type
     wip.updateQueue = current.updateQueue
