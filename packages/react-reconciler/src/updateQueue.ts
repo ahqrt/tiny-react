@@ -28,7 +28,7 @@ export const enqueueUpdate = <State>(updateQueue: UpdateQueue<State>, update: Up
     updateQueue.shared.pending = update
 }
 
-export const processUpdateQueue = <State>(baseState: State, pendingUpdate: Update<State>): { memoizedState: State } => {
+export const processUpdateQueue = <State>(baseState: State, pendingUpdate: Update<State> | null): { memoizedState: State } => {
     const result: ReturnType<typeof processUpdateQueue<State>> = { memoizedState: baseState }
     if (pendingUpdate !== null) {
         // baseState 1 update 2 => memoizedState = 2
